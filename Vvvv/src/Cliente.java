@@ -1,13 +1,12 @@
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Cliente extends Persona{
 
     private Boleto boleto;
 
-    public Cliente(String nombre, String cedula, Date fechaNacimiento){
-        this.nombre = nombre;
-        this.cedula = cedula;
-        this.fechaNacimiento = fechaNacimiento;
+    public Cliente(String nombre, String cedula, LocalDate fechaNacimiento){
+        super(nombre, cedula, fechaNacimiento);
 
     }
 
