@@ -78,8 +78,9 @@ public abstract class Animal {
 
     }
 
-    public void definirAlimentacion(){
-
+    public void definirAlimentacion(Alimentacion alimentacion){
+        System.out.println(nombreComun + " se está alimentando.");
+        alimentacion.mostrarTipoAlimentacion();
 
     }
 
