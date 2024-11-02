@@ -2,6 +2,6 @@
 Grupo 4 
 Cristhian Valverde, Juan Encalada, Darwin Jimbo
 
+![alt text](ZOOOO-1.png)
 
-![alt text](<ojala si-1.png>)
 
