@@ -1,5 +1,5 @@
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Veterinario extends  Persona implements Contrato{
 
@@ -10,13 +10,22 @@ public class Veterinario extends  Persona implements Contrato{
         this.especialidad = especialidad;
     }
 
+    public String getEspecialidad(){
+        return  especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
     @Override
     public void cuidarAnimal() {
-
+        System.out.println("El Veterinario " + getNombre() + " se encuentra al pendiente de los animales ");
     }
 
     @Override
     public void horarioTrabajo() {
-
+        System.out.println("El Veterinario " + getNombre() + " trabaja desde las 6 am hasta las 5 pm y" +
+                " se mantiene al contacto por alguna emergencia");
     }
 }

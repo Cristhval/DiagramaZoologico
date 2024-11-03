@@ -1,26 +1,38 @@
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Cuidador extends Persona implements Contrato{
 
-    private String animalAsignado;
+    private int animalAsignado;
 
-    public Cuidador(String nombre, String cedula, LocalDate fechaNacimiento, String animalAsignado) {
+    public Cuidador(String nombre, String cedula, LocalDate fechaNacimiento, int animalAsignado) {
         super(nombre, cedula, fechaNacimiento);
         this.animalAsignado = animalAsignado;
     }
 
-    public void alimentarAnimales(){
+    public Cuidador(String carlosLópez, String cui67890, LocalDate of) {
+        super(carlosLópez, cui67890, of);
+    }
 
+    public int getAnimalAsignado(){
+        return  animalAsignado;
+    }
+
+    public void setAnimalAsignado(int animalAsignado) {
+        this.animalAsignado = animalAsignado;
+    }
+
+    public void alimentarAnimales(){
+        System.out.println("El cuidador " + getNombre() + " esta alimentando a los animales.");
     }
 
     @Override
     public void cuidarAnimal() {
-
+        System.out.println("El cuidador " + getNombre() + " se encuentra cuidando de los animales ");
     }
 
     @Override
     public void horarioTrabajo() {
-
+        System.out.println("El cuidador " + getNombre() + " trabaja desde las 7 am hasta las 6pm ");
     }
 }

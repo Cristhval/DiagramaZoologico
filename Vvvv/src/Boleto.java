@@ -39,9 +39,8 @@ public class Boleto {
 
 
     public boolean validar(){
-
-
-        return false;
+        Date fechaActual = new Date();
+        return fecha != null && fecha.after(fechaActual);
     }
 
 }

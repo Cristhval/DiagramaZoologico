@@ -32,11 +32,11 @@ public class Alimentacion {
 
 
     public void mostrarTipoAlimentacion() {
-        System.out.println("Tipo de alimentación:");
+        System.out.println("Tipo de alimentacion:");
         if (esCarronero) System.out.println("- Carronero");
-        if (esCarnivoro) System.out.println("- Carnívoro");
-        if (esHervivoro) System.out.println("- Hervívoro");
-        if (esOmnivoro) System.out.println("- Omnívoro");
+        if (esCarnivoro) System.out.println("- Carnivoro");
+        if (esHervivoro) System.out.println("- Hervivoro");
+        if (esOmnivoro) System.out.println("- Omnivoro");
     }
 
 }

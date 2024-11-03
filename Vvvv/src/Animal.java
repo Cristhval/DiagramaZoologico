@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Animal {
 
@@ -8,17 +9,29 @@ public abstract class Animal {
     protected float peso;
     protected String nombreComun;
     protected String nombreCientifico;
-    private List<String> historialSalud;
-    private Date[] horarioAlimentacion;
+    protected List<String> historialSalud;
+    protected List<Date> horarioAlimentacion;
+    protected Reproduccion reproduccion;
+    protected Cuidador cuidador;
+    protected Veterinario veterinario;
+    protected Habitad habitad;
+    protected Alimentacion alimentacion;
 
     public Animal(LocalDate fechaDeNacimiento, float peso, String nombreComun, String nombreCientifico,
-                  List<String> historialSalud, Date[]horarioAlimentacion){
+                  List<String> historialSalud, List<Date>horarioAlimentacion, Reproduccion reproduccion,
+                  Cuidador cuidador, Veterinario veterinario, Habitad habitad, Alimentacion alimentacion){
+
         this.fechaDeNacimiento = fechaDeNacimiento;
         this.historialSalud = historialSalud;
         this.nombreComun = nombreComun;
-        this.horarioAlimentacion = horarioAlimentacion;
+        this.horarioAlimentacion = horarioAlimentacion != null ? horarioAlimentacion : new ArrayList<>();
         this.nombreCientifico = nombreCientifico;
         this.peso = peso;
+        this.reproduccion = reproduccion;
+        this.cuidador = cuidador;
+        this.veterinario = veterinario;
+        this.habitad = habitad;
+        this.alimentacion = alimentacion;
     }
 
     public LocalDate getFechaDeNacimiento() {
@@ -53,11 +66,11 @@ public abstract class Animal {
         this.nombreCientifico = nombreCientifico;
     }
 
-    public Date[] getHorarioAlimentacion() {
+    public List<Date> getHorarioAlimentacion() {
         return horarioAlimentacion;
     }
 
-    public void setHorarioAlimentacion(Date[] horarioAlimentacion) {
+    public void setHorarioAlimentacion(List<Date> horarioAlimentacion) {
         this.horarioAlimentacion = horarioAlimentacion;
     }
 
@@ -68,25 +81,96 @@ public abstract class Animal {
     public void setHistorialSalud(List<String> historialSalud) {
         this.historialSalud = historialSalud;
     }
-
-    public void actualizarHistorialSalud(){
-
-
+    public Reproduccion getReproduccion() {
+        return reproduccion;
     }
+
+    public void setReproduccion(Reproduccion reproduccion) {
+        this.reproduccion = reproduccion;
+    }
+
+    public Cuidador getCuidador() {
+        return cuidador;
+    }
+
+    public void setCuidador(Cuidador cuidador) {
+        this.cuidador = cuidador;
+    }
+
+    public Veterinario getVeterinario() {
+        return veterinario;
+    }
+
+    public void setVeterinario(Veterinario veterinario) {
+        this.veterinario = veterinario;
+    }
+
+    public void actualizarHistorialSalud(String registro){
+        historialSalud.add(registro);
+        System.out.println("Historial de salud actualizado para " + nombreComun + ": " + registro);
+    }
+
+    public void serAtendidoPorVeterinario() {
+        if (veterinario != null) {
+            System.out.println(nombreComun + " esta siendo atendido por el veterinario " + veterinario.getNombre());
+            veterinario.cuidarAnimal();
+
+            // Registrar en el historial de salud la atencion del veterinario
+            String registro = "Atendido por el veterinario " + veterinario.getNombre() + " el " + new Date();
+            actualizarHistorialSalud(registro);
+        } else {
+            System.out.println("No hay veterinario asignado para " + nombreComun);
+        }
+    }
+
 
     public void registrarHorarioAlimentacion(){
+        horarioAlimentacion.add(new Date());  // Agrega la fecha y hora actual
+        System.out.println("Horario de alimentacion registrado para " + nombreComun + " a las " + new Date());
 
     }
 
+
     public void definirAlimentacion(Alimentacion alimentacion){
-        System.out.println(nombreComun + " se está alimentando.");
+        System.out.println(nombreComun + " se esta alimentando");
         alimentacion.mostrarTipoAlimentacion();
 
+    }
+    public void serAlimentadoPorCuidador() {
+        if (cuidador != null) {
+            System.out.println(nombreComun + " esta siendo alimentado por " + cuidador.getNombre());
+            cuidador.alimentarAnimales();
+            registrarHorarioAlimentacion();  // Registra la hora actual de alimentacion
+        } else {
+            System.out.println("No hay cuidador asignado para " + nombreComun);
+        }
     }
 
     public void registarReproduccion(){
 
+        if (reproduccion != null){
+            reproduccion.registrarNacimiento();
+            System.out.println("reproduccion registrada para " + nombreComun);
+        } else{
+            System.out.println("Este animal no tiene datos de haberse reproducido ");
+        }
 
+    }
+
+
+    // Metodo para limpiar el habitat
+    public void limpiarHabitad() {
+        if (habitad != null) {
+            habitad.limpiarHabitad();
+        } else {
+            System.out.println("Este animal no tiene un habitat asignado.");
+        }
+    }
+    public void mostrarInformacionAnimal() {
+        System.out.println("Nombre Común: " + nombreComun);
+        System.out.println("Nombre Científico: " + nombreCientifico);
+        System.out.println("Peso: " + peso + " kg");
+        alimentacion.mostrarTipoAlimentacion(); // Uso de la clase Alimentacion
     }
 
 }
