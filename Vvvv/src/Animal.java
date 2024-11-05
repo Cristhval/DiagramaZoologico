@@ -104,6 +104,13 @@ public abstract class Animal {
     public void setVeterinario(Veterinario veterinario) {
         this.veterinario = veterinario;
     }
+    public Alimentacion getAlimentacion(){
+        return alimentacion;
+    }
+
+    public void setAlimentacion(Alimentacion alimentacion) {
+        this.alimentacion = alimentacion;
+    }
 
     public void actualizarHistorialSalud(String registro){
         historialSalud.add(registro);
@@ -167,10 +174,14 @@ public abstract class Animal {
         }
     }
     public void mostrarInformacionAnimal() {
-        System.out.println("Nombre Común: " + nombreComun);
-        System.out.println("Nombre Científico: " + nombreCientifico);
+        System.out.println("Nombre Comun: " + nombreComun);
+        System.out.println("Nombre Cientifico: " + nombreCientifico);
         System.out.println("Peso: " + peso + " kg");
-        alimentacion.mostrarTipoAlimentacion(); // Uso de la clase Alimentacion
+        if (alimentacion != null) {
+            System.out.println("Tipo de alimentacion: "+ alimentacion.mostrarTipoAlimentacion());
+        } else {
+            System.out.println("Tipo de alimentacion: No especificado");
+        }
     }
 
 }

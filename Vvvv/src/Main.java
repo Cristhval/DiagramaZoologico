@@ -6,17 +6,24 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         // Crear alimentaciones
-        Alimentacion alimentacionCarnivora = new Alimentacion(true, false, false, false);
-        Alimentacion alimentacionHervivora = new Alimentacion(false, false, true, false);
-        Alimentacion alimentacionOmnivora = new Alimentacion(false, false, false, true);
+        Alimentacion alimentacionCarnivora = new Alimentacion(true, false,
+                false, false);
+        Alimentacion alimentacionHervivora = new Alimentacion(false, false,
+                true, false);
+        Alimentacion alimentacionOmnivora = new Alimentacion(false, false,
+                false, true);
 
         // Crear veterinarios
-        Veterinario veterinario1 = new Veterinario("Dr. Juan Perez", "VET12345", LocalDate.of(1985, 1, 15), "Veterinario de mamiferos");
-        Veterinario veterinario2 = new Veterinario("Dra. Ana Gómez", "VET54321", LocalDate.of(1990, 6, 22), "Veterinario de reptiles");
+        Veterinario veterinario1 = new Veterinario("Dr. Juan Perez", "VET12345", LocalDate.of(1985,
+                1, 15), "Veterinario de mamiferos");
+        Veterinario veterinario2 = new Veterinario("Dra. Ana Gómez", "11035597", LocalDate.of(1990,
+                6, 22), "Veterinario de reptiles");
 
         // Crear cuidadores
-        Cuidador cuidador1 = new Cuidador("Carlos Lopez", "CUI67890", LocalDate.of(1980, 5, 30));
-        Cuidador cuidador2 = new Cuidador("Lucia Fernandez", "CUI09876", LocalDate.of(1992, 11, 10));
+        Cuidador cuidador1 = new Cuidador("Carlos Lopez", "CUI67890", LocalDate.of(1980,
+                5, 30));
+        Cuidador cuidador2 = new Cuidador("Lucia Fernandez", "CUI09876", LocalDate.of(1992,
+                11, 10));
 
         // Crear habitats
         Date[] horariosLimpiezaMamifero = {new Date(), new Date(System.currentTimeMillis() + 3600000)};
@@ -74,5 +81,14 @@ public class Main {
         leon.amamantar();
         tiburon.nadar();
         cocodrilo.tomarElSol();
+
+        cuidador1.alimentarAnimales();
+        cuidador2.cuidarAnimal();
+        veterinario1.horarioTrabajo();
+
+        cocodrilo.mostrarInformacionAnimal();
+        tiburon.mostrarInformacionAnimal();
+        leon.serAtendidoPorVeterinario();
+        tiburon.registrarHorarioAlimentacion();
     }
 }
