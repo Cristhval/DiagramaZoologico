@@ -2,7 +2,8 @@
 Grupo 4 
 Cristhian Valverde, Juan Encalada, Darwin Jimbo
 
-![alt text](ZologicoV2-1.png)
+![alt text](Zoolo-1.png)
+
 
 
 
